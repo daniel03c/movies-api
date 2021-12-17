@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var cors = require('cors');
+
 var indexRouter = require('./routes/index');
 var moviesRouter = require('./routes/movies');
 
@@ -20,8 +22,7 @@ mongoose.connect(process.env.DB_URI,
             .then(() => console.log('dbcinema connection successful'))
             .catch((err) => console.error(err));
 
-
-
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
